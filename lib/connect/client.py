@@ -5,7 +5,7 @@ import json
 import base64
 import sys
 
-host = "http://127.0.0.1:4999/"
+host = "http://123.206.49.137:4999/"
 pk_URL = host + "publicKey"
 login_URL = host + "login"
 
@@ -59,7 +59,11 @@ def post(username, pwd):
     print(data)
     if data['status'] == 'succeed':
         f = open("login_rsp", "w")
-        f.write("%s\n%s\n" % (data['username'], data['level']))
+        f.write("succeed\n%s\n" % (data['level']))
+        f.close()
+    else:
+        f = open("login_rsp", "w")
+        f.write("%s\n" % (data['status']))
         f.close()
     f = open("login_flag", "w")
     f.close()
